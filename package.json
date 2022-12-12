@@ -1,0 +1,23 @@
+{
+  "name": "basic-server",
+  "version": "1.0.0",
+  "description": "first node.js server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajith-Arjunan/Basic-server.git"
+  },
+  "author": "Ajith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ajith-Arjunan/Basic-server/issues"
+  },
+  "homepage": "https://github.com/Ajith-Arjunan/Basic-server#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
