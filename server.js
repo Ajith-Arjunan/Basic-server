@@ -37,11 +37,32 @@ http
 
                 }).on('data', (dataBits) => {
                     body += dataBits; //data chunks
-                    console.log(dataBits);
+                    // console.log(dataBits);
+                }).on('end', () => {
+                    // console.log("body data", body);
+                    body = JSON.parse(body);
+                    let newTodo = todoList;
+                    newTodo.push(body.item);
+                    console.log(newTodo);
+                    res.writeHead(201);
+                });
+            } else if (method === "DELETE") {
+                let body = "";
+                req.on('error', (err) => {
+                    console.error(err);
+                }).on('data', (chunks) => {
+                    body += chunks;
                 }).on('end', () => {
                     body = JSON.parse(body);
-                    console.log("body data", body);
-                });
+                    let DeleteItem = body.item;
+                    for (let i = 0; i < todoList.length; i++) {
+                        if (todoList[i] === DeleteItem) {
+                            todoList.splice(i, 1);
+                            break;
+                        }
+                    }
+                    res.writeHead(204);
+                })
             } else {
                 res.writeHead(501);
             }
@@ -62,3 +83,7 @@ http
 // http://localhost:8081/aboutUs
 // http://localhost:8081/contactUs
 
+// CSR Client side rendered
+
+
+// SSR Seerver side rendered
